@@ -1,6 +1,7 @@
 package org.example;
 
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -21,9 +22,18 @@ public class PostRequest {
 
         //Sending JSON body as a string
 
-        given()
+       Response response = given()
                 .header("Content-Type",ContentType.JSON)
-                .body("")
+                .body("{\n" +
+                        "        \"id\": \"4\",\n" +
+                        "        \"FirstName\": \"Santosh\",\n" +
+                        "        \"LastName\": \"Raju\",\n" +
+                        "        \"Role\": \"QA Analyst\"\n" +
+                        "    }")
+                .log()
+                .all()
+                .post("http://localhost:3000/employees");
+        response.prettyPrint();
 
 
     }
