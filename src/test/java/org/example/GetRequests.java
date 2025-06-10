@@ -5,6 +5,7 @@ import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
+import static java.lang.System.getProperty;
 
 public class GetRequests {
 
@@ -28,4 +29,5 @@ public class GetRequests {
         System.out.println("response.getStatusCode() = " + response.getStatusCode());
         System.out.println("response.getTime() = " + response.getTime());
     }
+
 }
