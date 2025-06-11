@@ -31,5 +31,40 @@
           <scope>test</scope>
       </dependency>
 
+
+      <!-- This jafavaker library is useful to generate randome values -->
+      <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+      <dependency>
+          <groupId>com.github.javafaker</groupId>
+          <artifactId>javafaker</artifactId>
+          <version>1.0.2</version>
+      </dependency>
+
+
+      <!-- This json Dependency is useful to send POST request -->
+      <!-- https://mvnrepository.com/artifact/org.json/json -->
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20250517</version>
+      </dependency>
+
+
+      <!-- This will do the serialization and will convert java to Json -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.15.2</version> <!-- You can use the latest stable version -->
+      </dependency>
+
+      <!-- This will lombok dependency will help to creat getter and setter in POJO with annotations-->
+      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.38</version>
+      </dependency>
+
+
   </dependencies>
 </project>

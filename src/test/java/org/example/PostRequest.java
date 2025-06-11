@@ -1,17 +1,28 @@
 package org.example;
 
+import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.pojo.Address;
+import org.pojo.Employee;
+import org.pojo.FavFoods;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
+import org.utils.TestDataFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static io.restassured.RestAssured.*;
 import static java.nio.file.Files.readAllBytes;
@@ -89,6 +100,73 @@ public class PostRequest {
       response.prettyPrint();
         System.out.println(" Received Status Code :" + response.statusCode());
 
+    }
+
+    @Test
+    public void fouthApproach(){
+        // Sending POST request using JSON library
+        //{} --> use JsonObejct from org.json
+        //[] --> use JsonArray
+
+        JSONObject obj = new JSONObject();
+        Faker faker = new Faker();
+        obj.put("id", faker.number().numberBetween(4,10));
+        obj.put("FirstName", faker.name().firstName());
+        obj.put("LastName",faker.name().lastName());
+        obj.put("Role", "Developer");
+        obj.put("Email", faker.internet().emailAddress());
+
+
+        JSONArray jobsList = new JSONArray();
+        jobsList.put("Analust");
+        jobsList.put("Designer");
+
+        obj.put("Jobs",jobsList);
+
+
+        JSONObject foodlist = new JSONObject();
+        foodlist.put("breakfast","idle");
+        foodlist.put("lunch","Biryani");
+
+        JSONArray dinnertime = new JSONArray();
+        dinnertime.put("Chapathi");
+        dinnertime.put("upma");
+
+        foodlist.put("dinner",dinnertime);
+        obj.put("FavFoods",foodlist);
+
+
+        Response response =  given()
+                .header("Content-Type",ContentType.JSON)
+                .log()
+                .all()
+                .body(obj)
+                .post("http://localhost:3000/employees");
+
+        response.prettyPrint();
+        System.out.println(" Received Status Code :" + response.statusCode());
+
+    }
+
+    @Test
+    public void fourthApprochModified(){
+        /**
+         * in this modified fourth approach i am using POJO {plain old java object}
+         * {} --> Create a POJO class
+         * [] --> list type
+         *
+         *  Make sure you have created the POJO classes
+         * Added Lombok dependency to use Getter and settet in POJO classes
+         */
+        Response response =  given()
+                .header("Content-Type",ContentType.JSON)
+                .log()
+                .all()
+                .body(TestDataFactory.employeeData())
+                .post("http://localhost:3000/employees");
+
+        response.prettyPrint();
+        System.out.println(" Received Status Code :" + response.statusCode());
     }
 }
 
