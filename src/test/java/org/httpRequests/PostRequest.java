@@ -1,31 +1,23 @@
-package org.example;
+package org.httpRequests;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.config.PropertyReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.pojo.Address;
-import org.pojo.Employee;
-import org.pojo.FavFoods;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import org.utils.TestDataFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static io.restassured.RestAssured.*;
-import static java.nio.file.Files.readAllBytes;
 
 
 public class PostRequest {
@@ -159,11 +151,12 @@ public class PostRequest {
          * Added Lombok dependency to use Getter and settet in POJO classes
          */
         Response response =  given()
+                .baseUri(PropertyReader.getConfig().baseUri())
                 .header("Content-Type",ContentType.JSON)
                 .log()
                 .all()
                 .body(TestDataFactory.employeeData())
-                .post("http://localhost:3000/employees");
+                .post(PropertyReader.getConfig().employeeEndPoint());
 
         response.prettyPrint();
         System.out.println(" Received Status Code :" + response.statusCode());

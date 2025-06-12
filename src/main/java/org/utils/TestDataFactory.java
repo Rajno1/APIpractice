@@ -29,4 +29,24 @@ public class TestDataFactory {
                 faker.internet().emailAddress(),
                 Arrays.asList("Developer","Designer"),addressList,favFoods);
     }
+
+
+    public static Employee updateIdTwo() {
+
+        List<Address> addressList = new ArrayList<>();
+        addressList.add(new Address("Palamaneru", "Chittoor", "Andhra Pradesh"));
+        addressList.add(new Address("Hyderabad", "RangaReddy", "Telangana"));
+
+
+        List<FavFoods> favFoods = new ArrayList<>();
+        favFoods.add(new FavFoods("Idle","Biryani", Arrays.asList("chapthi","Milk")));
+
+        return new Employee(2,
+                "Mahalakshmi",
+                "Rajasekhar",
+                "Analyst",
+                "mahalakshmi@gmail.com",
+                Arrays.asList("Developer","Designer"),addressList,favFoods);
+    }
+
 }
