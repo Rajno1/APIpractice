@@ -28,7 +28,63 @@
           <groupId>org.testng</groupId>
           <artifactId>testng</artifactId>
           <version>7.11.0</version>
-          <scope>test</scope>
+      </dependency>
+
+
+      <!-- This jafavaker library is useful to generate randome values -->
+      <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+      <dependency>
+          <groupId>com.github.javafaker</groupId>
+          <artifactId>javafaker</artifactId>
+          <version>1.0.2</version>
+      </dependency>
+
+
+      <!-- This json Dependency is useful to send POST request -->
+      <!-- https://mvnrepository.com/artifact/org.json/json -->
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20250517</version>
+      </dependency>
+
+
+      <!-- This will do the serialization and will convert java to Json -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.15.2</version> <!-- You can use the latest stable version -->
+      </dependency>
+
+      <!-- This will lombok dependency will help to creat getter and setter in POJO with annotations-->
+      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.38</version>
+      </dependency>
+
+      <!-- owner library is used to make easy of rading config file-->
+      <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+      <dependency>
+          <groupId>org.aeonbits.owner</groupId>
+          <artifactId>owner</artifactId>
+          <version>1.0.12</version>
+      </dependency>
+
+
+      <!-- SLF4J API usng for logs-->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>2.0.9</version>
+      </dependency>
+
+      <!-- Logback Classic (SLF4J Binding) -->
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.4.11</version>
       </dependency>
 
   </dependencies>
