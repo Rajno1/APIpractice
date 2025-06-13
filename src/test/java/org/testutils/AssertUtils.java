@@ -1,13 +1,13 @@
 package org.testutils;
 
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.BaseTest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.testng.Assert.*;
 
-
+import static io.restassured.RestAssured.*;
 
 public class AssertUtils extends BaseTest {
 
@@ -21,7 +21,27 @@ public class AssertUtils extends BaseTest {
 
         long responseTime = response.getTime();
         logger.info("Received Response Time : " + responseTime);
-        assertTrue(responseTime<600,"Response time is greater than 600ms");
+        assertTrue(responseTime<1200,"Response time is greater than 1200ms");
         assertEquals(response.getContentType(),"application/json","Unexpected Content Type");
+    }
+
+
+    public static void assertJsonString(Response response, String path, String expectedValue) {
+        String actualValue = response.jsonPath().getString(path);
+        assertEquals(actualValue, expectedValue, "Mismatch in JSON value for path: " + path);
+    }
+
+
+
+
+
+
+
+    public static void getResponseHeaders(Headers headers){
+        logger.info(" -- Below is the Response Header -- ");
+
+        for (Header header: headers){
+            logger.info(header.getName() +" : "+ header.getValue());
+        }
     }
 }

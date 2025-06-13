@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "jobs": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "address": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "town": {
+              "type": "string"
+            },
+            "district": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "town",
+            "district",
+            "state"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "town": {
+              "type": "string"
+            },
+            "district": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "town",
+            "district",
+            "state"
+          ]
+        }
+      ]
+    },
+    "favFoods": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "brakfast": {
+              "type": "string"
+            },
+            "lunch": {
+              "type": "string"
+            },
+            "dinner": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "brakfast",
+            "lunch",
+            "dinner"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "firstName",
+    "lastName",
+    "role",
+    "email",
+    "jobs",
+    "address",
+    "favFoods"
+  ]
+}

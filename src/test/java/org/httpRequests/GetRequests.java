@@ -2,14 +2,21 @@ package org.httpRequests;
 
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.config.PropertyReader;
 import org.testng.annotations.Test;
 import org.testutils.AssertUtils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static io.restassured.RestAssured.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static org.testutils.AssertUtils.getResponseHeaders;
 
 
 public class GetRequests {
@@ -25,6 +32,8 @@ public class GetRequests {
                 .log()
                 .all()
                 .get(PropertyReader.getConfig().employeeEndPoint());
+
+        response.prettyPrint();
 
         AssertUtils.assertStandardResponses(response);
 
@@ -63,4 +72,29 @@ public class GetRequests {
     }
 
 
+    @Test
+    public void getUserSix() throws IOException {
+        Response response = given()
+                .baseUri(PropertyReader.getConfig().baseUri())
+                .pathParam("id",6)
+                .log()
+                .all()
+                .get(PropertyReader.getConfig().employeeEndPoint()+"/{id}");
+
+        response.prettyPrint();
+
+        getResponseHeaders(response.headers());
+
+        AssertUtils.assertStandardResponses(response);
+
+        // Asserting JSON value
+        AssertUtils.assertJsonString(response,"address[1].district","RangaReddy");
+
+        // JSON Schema Validation
+        response.then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema.json"));
+
+        // String response in an external file
+        Files.write(Paths.get(System.getProperty("user.dir")+"/response.json"),response.asByteArray());
+
+    }
 }
