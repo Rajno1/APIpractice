@@ -1,4 +1,4 @@
-package org.httpRequests;
+package org.requests;
 
 import static io.restassured.RestAssured.*;
 

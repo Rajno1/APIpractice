@@ -1,4 +1,4 @@
-package org.httpRequests;
+package org.requests;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
@@ -6,9 +6,11 @@ import io.restassured.response.Response;
 import org.config.PropertyReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.requestBuilders.PostCallRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
+import org.testutils.AssertUtils;
 import org.utils.TestDataFactory;
 
 import java.io.IOException;
@@ -160,6 +162,18 @@ public class PostRequest {
 
         response.prettyPrint();
         System.out.println(" Received Status Code :" + response.statusCode());
+    }
+
+    @Test
+    public void postAfterBuilder(){
+
+       Response postResponse =  new PostCallRequest(PropertyReader.getConfig().employeeEndPoint())
+                .setRequestBody(TestDataFactory.employeeData())
+                .send();
+
+       postResponse.prettyPrint();
+        AssertUtils.assertStandardPostResponse(postResponse);
+        AssertUtils.getResponseHeaders(postResponse.getHeaders());
     }
 }
 

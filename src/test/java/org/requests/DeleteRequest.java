@@ -1,4 +1,4 @@
-package org.httpRequests;
+package org.requests;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 

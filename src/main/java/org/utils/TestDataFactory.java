@@ -41,12 +41,26 @@ public class TestDataFactory {
         List<FavFoods> favFoods = new ArrayList<>();
         favFoods.add(new FavFoods("Idle","Biryani", Arrays.asList("chapthi","Milk")));
 
-        return new Employee(2,
-                "Mahalakshmi",
-                "Rajasekhar",
-                "Analyst",
-                "mahalakshmi@gmail.com",
-                Arrays.asList("Developer","Designer"),addressList,favFoods);
+//        Employee.builder().id(3);
+//        return new Employee(2,
+//                "Mahalakshmi",
+//                "Rajasekhar",
+//                "Analyst",
+//                "mahalakshmi@gmail.com",
+//                Arrays.asList("Developer","Designer"),addressList,favFoods);
+
+
+        return Employee.builder()
+                .id(2)
+                .firstName("Mahalakshmi")
+                .lastName("Rajasekhar")
+                .role("Analyst")
+                .email("mahalakshmi@gmail.com")
+                .jobs(Arrays.asList("Developer", "Designer"))
+                .address(addressList)
+                .favFoods(favFoods)
+                .build();
+
     }
 
 }
