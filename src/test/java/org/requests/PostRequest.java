@@ -6,11 +6,12 @@ import io.restassured.response.Response;
 import org.config.PropertyReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.requestBuilders.PostCallRequest;
+import org.requestBuilders.PostRequestCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import org.testutils.AssertUtils;
+import org.utils.JsonUtils;
 import org.utils.TestDataFactory;
 
 import java.io.IOException;
@@ -167,8 +168,15 @@ public class PostRequest {
     @Test
     public void postAfterBuilder(){
 
-       Response postResponse =  new PostCallRequest(PropertyReader.getConfig().employeeEndPoint())
-                .setRequestBody(TestDataFactory.employeeData())
+        String endpoint = PropertyReader.getConfig().employeeEndPoint();
+
+
+        // Approach 2: Using JSON File
+        String jsonFromFile = JsonUtils.readJsonAsString("data.json");
+
+        Response postResponse = new PostRequestCall()
+                .setEndpoint(endpoint)
+                .setBody(jsonFromFile)
                 .send();
 
        postResponse.prettyPrint();

@@ -1,0 +1,32 @@
+{
+    "id": 6,
+    "firstName": "Mina",
+    "lastName": "Farrell",
+    "email": "delmar.schinner@yahoo.com",
+    "jobs": [
+        "Developer",
+        "Designer"
+    ],
+    "address": [
+        {
+            "town": "Palamaneru",
+            "district": "Chittoor",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "town": "Hyderabad",
+            "district": "RangaReddy",
+            "state": "Telangana"
+        }
+    ],
+    "favFoods": [
+        {
+            "brakfast": "Idle",
+            "lunch": "Biryani",
+            "dinner": [
+                "chapthi",
+                "Milk"
+            ]
+        }
+    ]
+}

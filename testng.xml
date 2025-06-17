@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="org.listener.TestListener"></listener>
+    </listeners>
+    <test parallel="methods" thread-count="1" name="/Users/rajasekhar/IdeaProjects/RestAssured">
+        <classes>
+            <class name="org.requests.DeleteRequest">
+                <methods>
+                    <include name="deleteUser" />
+                </methods>
+            </class>
+            <class name="org.requests.GetRequests">
+                <methods>
+                    <include name="getAllEmp" />
+                    <include name="getEmpTwo" />
+                    <include name="getUserTwo" />
+                    <include name="getUserSix" />
+                </methods>
+            </class>
+            <class name="org.requests.PostRequest">
+                <methods>
+                    <include name="firstApproach" />
+                    <include name="secondApproach" />
+                    <include name="thirdApproach" />
+                    <include name="fouthApproach" />
+                    <include name="fourthApprochModified" />
+                    <include name="postAfterBuilder" />
+                </methods>
+            </class>
+            <class name="org.requests.PutRequest">
+                <methods>
+                    <include name="updateData" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

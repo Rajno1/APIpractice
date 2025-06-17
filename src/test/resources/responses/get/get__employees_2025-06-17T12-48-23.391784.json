@@ -1,0 +1,379 @@
+[
+    {
+        "id": "1",
+        "FirstName": "Rajasekhar",
+        "LastName": "Maddigalla",
+        "Role": "QA Lead",
+        "address": [
+            {
+                "Town": "Palamaneru",
+                "District": "Chittoor",
+                "State": "Andhrapradesh"
+            },
+            {
+                "Town": "Hyderabad",
+                "District": "RangaReddy",
+                "State": "Telangana"
+            }
+        ],
+        "FavFoods": {
+            "breakfast": "Ambali",
+            "lunch": "RagiMudda",
+            "dinner": [
+                "Chapathi",
+                "ButterMilk"
+            ]
+        }
+    },
+    {
+        "id": "2",
+        "firstName": "Mahalakshmi",
+        "lastName": "Rajasekhar",
+        "email": "mahalakshmi@gmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "FirstName": "Amrutha",
+        "LastName": "Balappagari",
+        "Role": "QA Analyst",
+        "Email": "bamrutha@gmail.com",
+        "Jobs": [
+            "tester",
+            "QA Analyst"
+        ],
+        "FavFoods": {
+            "breakfast": "Ambali",
+            "lunch": "RagiMudda",
+            "dinner": [
+                "Chapathi",
+                "ButterMilk"
+            ]
+        }
+    },
+    {
+        "id": "6",
+        "firstName": "Jackie",
+        "lastName": "Prosacco",
+        "role": "Analyst",
+        "email": "zachariah.thompson@yahoo.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "firstName": "Hortensia",
+        "lastName": "Sporer",
+        "email": "damien.johnston@yahoo.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "firstName": "Marcela",
+        "lastName": "Barrows",
+        "email": "burton.marks@hotmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "firstName": "Venus",
+        "lastName": "Larkin",
+        "email": "carmelia.beahan@hotmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "firstName": "Oren",
+        "lastName": "Wuckert",
+        "email": "hunter.schmeler@gmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "FirstName": "Santosh",
+        "LastName": "Raju",
+        "Role": "QA Analyst"
+    },
+    {
+        "id": "5",
+        "firstName": "Oren",
+        "lastName": "Wuckert",
+        "email": "hunter.schmeler@gmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "firstName": "Oren",
+        "lastName": "Wuckert",
+        "email": "hunter.schmeler@gmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "1fd4",
+        "empty": false,
+        "mapType": "java.util.HashMap"
+    },
+    {
+        "id": 4,
+        "firstName": "Cruz",
+        "lastName": "Cassin",
+        "email": "fritz.beahan@yahoo.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "firstName": "Oren",
+        "lastName": "Wuckert",
+        "email": "hunter.schmeler@gmail.com",
+        "jobs": [
+            "Developer",
+            "Designer"
+        ],
+        "address": [
+            {
+                "town": "Palamaneru",
+                "district": "Chittoor",
+                "state": "Andhra Pradesh"
+            },
+            {
+                "town": "Hyderabad",
+                "district": "RangaReddy",
+                "state": "Telangana"
+            }
+        ],
+        "favFoods": [
+            {
+                "brakfast": "Idle",
+                "lunch": "Biryani",
+                "dinner": [
+                    "chapthi",
+                    "Milk"
+                ]
+            }
+        ]
+    }
+]
