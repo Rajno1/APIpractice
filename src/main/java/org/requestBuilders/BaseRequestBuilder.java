@@ -5,8 +5,9 @@ import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.response.Response;
 import org.config.PropertyReader;
+import org.reports.ExtentLogger;
 import org.utils.ResponseWriter;
-
+import org.reports.ExtentManager;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,4 +68,28 @@ public abstract class BaseRequestBuilder<T extends BaseRequestBuilder<T>> {
     }
 
     protected abstract T self();
+
+    protected void logRequestToReport(String method) {
+        StringBuilder requestDetails = new StringBuilder();
+
+        requestDetails.append("HTTP Method: ").append(method).append("\n");
+        requestDetails.append("Endpoint: ").append(endpoint).append("\n");
+
+        if (!pathParams.isEmpty()) {
+            requestDetails.append("Path Params:\n").append(new ObjectMapper().valueToTree(pathParams).toPrettyString()).append("\n");
+        }
+
+        if (!queryParams.isEmpty()) {
+            requestDetails.append("Query Params:\n").append(new ObjectMapper().valueToTree(queryParams).toPrettyString()).append("\n");
+        }
+
+        if (body != null) {
+            requestDetails.append("Request Body:\n").append(body).append("\n");
+        }
+
+        // Log to Extent Report
+        ExtentLogger.logRequestDetails(requestDetails.toString());
+
+    }
+
 }

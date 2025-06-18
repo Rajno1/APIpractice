@@ -1,8 +1,6 @@
 package org.reports;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.markuputils.CodeLanguage;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
 
 
 public final class ExtentManager {

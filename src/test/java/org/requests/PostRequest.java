@@ -3,9 +3,11 @@ package org.requests;
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.reports.ExtentLogger;
 import org.requestBuilders.PostRequestCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +24,7 @@ import java.io.File;
 
 import static io.restassured.RestAssured.*;
 
-
+@FrameworkAnnotation(author = {"QA Team"}, category = {"Regression"})
 public class PostRequest {
 
     private static final Logger log = LoggerFactory.getLogger(PostRequest.class);
@@ -165,7 +167,8 @@ public class PostRequest {
         System.out.println(" Received Status Code :" + response.statusCode());
     }
 
-    @Test
+    @FrameworkAnnotation(author = {"Rajasekhar"},category = {"Regression"})
+    @Test(description = "Final Post Request")
     public void postAfterBuilder(){
 
         String endpoint = PropertyReader.getConfig().employeeEndPoint();
@@ -179,7 +182,8 @@ public class PostRequest {
                 .setBody(jsonFromFile)
                 .send();
 
-       postResponse.prettyPrint();
+        //postResponse.prettyPrint();
+        ExtentLogger.logResponse(postResponse.asPrettyString());
         AssertUtils.assertStandardPostResponse(postResponse);
         AssertUtils.getResponseHeaders(postResponse.getHeaders());
     }

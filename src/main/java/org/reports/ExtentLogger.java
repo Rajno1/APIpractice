@@ -21,7 +21,13 @@ public final class ExtentLogger {
         ExtentManager.getExTest().info(messsge);
     }
 
+    public static void logRequestDetails(String details) {
+        ExtentManager.getExTest().info("Request Details:");
+        ExtentManager.getExTest().info("<pre>" + details + "</pre>");
+    }
+
     public static void logResponse(String messsge){
+        ExtentManager.getExTest().info("Response Details:");
         ExtentManager.getExTest().pass(MarkupHelper.createCodeBlock(messsge, CodeLanguage.JSON));
     }
 

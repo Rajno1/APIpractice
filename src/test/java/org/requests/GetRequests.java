@@ -1,16 +1,15 @@
 package org.requests;
 
-import com.aventstack.extentreports.markuputils.CodeLanguage;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.BaseTest;
+import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
 import org.reports.ExtentLogger;
 import org.requestBuilders.GetRequestCall;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testutils.AssertUtils;
-import org.reports.ExtentManager;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,13 +18,14 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.*;
 import static org.testutils.AssertUtils.getResponseHeaders;
 
-
+@Listeners(org.listener.TestListener.class)
+@FrameworkAnnotation(author = {"QA Team"}, category = {"Regression"})
 public class GetRequests extends BaseTest {
 
     // Before starting should have idea about Static Import
     // Restassured we can write both in BDD and Non BDD way
-    
-    @Test
+    @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
+    @Test(description = "Get list of all employees and validate standard assertions")
     public void getAllEmp(){
 
         String employeeEndPoint = PropertyReader.getConfig().employeeEndPoint();
@@ -42,8 +42,8 @@ public class GetRequests extends BaseTest {
             AssertUtils.assertStandardResponses(allEmpResponse);
             AssertUtils.getResponseHeaders(allEmpResponse.getHeaders());
     }
-
-    @Test
+    @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
+    @Test(description = "Get Employee Details of Id 2")
     public void getEmpTwo(){
         String endpoint = PropertyReader.getConfig().employeeEndPoint();
         Response getEmpTwo = new GetRequestCall()
@@ -55,11 +55,10 @@ public class GetRequests extends BaseTest {
        // ExtentManager.getExTest().pass(MarkupHelper.createCodeBlock(getEmpTwo.prettyPrint(), CodeLanguage.JSON));
 
         ExtentLogger.logResponse(getEmpTwo.asPrettyString());
-
         AssertUtils.getResponseHeaders(getEmpTwo.getHeaders());
         AssertUtils.assertStandardResponses(getEmpTwo);
     }
-
+    @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
     @Test
     public void getUserTwo(){  // Get Employee with id 2 using Query parameters
        Response response = given()
@@ -72,7 +71,7 @@ public class GetRequests extends BaseTest {
        AssertUtils.assertStandardResponses(response);
     }
 
-
+    @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
     @Test
     public void getUserSix() throws IOException {
         Response response = given()

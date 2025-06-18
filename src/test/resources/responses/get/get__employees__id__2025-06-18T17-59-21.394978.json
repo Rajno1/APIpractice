@@ -1,0 +1,32 @@
+{
+    "id": "2",
+    "firstName": "Mahalakshmi",
+    "lastName": "Rajasekhar",
+    "email": "mahalakshmi@gmail.com",
+    "jobs": [
+        "Developer",
+        "Designer"
+    ],
+    "address": [
+        {
+            "town": "Palamaneru",
+            "district": "Chittoor",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "town": "Hyderabad",
+            "district": "RangaReddy",
+            "state": "Telangana"
+        }
+    ],
+    "favFoods": [
+        {
+            "brakfast": "Idle",
+            "lunch": "Biryani",
+            "dinner": [
+                "chapthi",
+                "Milk"
+            ]
+        }
+    ]
+}

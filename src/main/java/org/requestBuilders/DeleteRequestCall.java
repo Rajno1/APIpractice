@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 public class DeleteRequestCall extends BaseRequestBuilder<DeleteRequestCall> {
     @Override
     public Response send() {
+        logRequestToReport("DELETE"); // Log request parameters to Extent report
         Response response = prepareRequest()
                 .when()
                 .delete(endpoint)

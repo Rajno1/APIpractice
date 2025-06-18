@@ -1,9 +1,11 @@
 package org.requests;
 import io.restassured.response.Response;
+import org.annotations.FrameworkAnnotation;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
 
+@FrameworkAnnotation(author = {"QATeam"}, category = {"Regression"})
 public class DeleteRequest {
 
     @Test

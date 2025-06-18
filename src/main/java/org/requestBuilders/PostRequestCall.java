@@ -8,7 +8,19 @@ public class PostRequestCall extends BaseRequestBuilder <PostRequestCall> {
 
     @Override
     public Response send() {
-        Response response = prepareRequest().when().post(endpoint).then().log().all().extract().response();
+//        Response response = prepareRequest().when().post(endpoint).then().log().all().extract().response();
+//        storeResponse("POST", response);
+//        return response;
+        logRequestToReport("POST"); // Log request parameters to Extent report
+
+        Response response = prepareRequest()
+                .when()
+                .post(endpoint)
+                .then()
+                .log().all()
+                .extract()
+                .response();
+
         storeResponse("POST", response);
         return response;
     }

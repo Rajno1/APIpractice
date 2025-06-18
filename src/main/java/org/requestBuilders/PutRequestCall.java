@@ -5,6 +5,8 @@ import io.restassured.response.Response;
 public class PutRequestCall extends BaseRequestBuilder<PutRequestCall> {
     @Override
     public Response send() {
+
+        logRequestToReport("PUT"); // Log request parameters to Extent report
         Response response = prepareRequest()
                 .when()
                 .put(endpoint)

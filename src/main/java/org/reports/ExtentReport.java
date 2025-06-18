@@ -15,6 +15,8 @@ public class ExtentReport {
     public static void intiReport(){
         extent = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+        spark.config().setDocumentTitle("RestAssured Report");
+        spark.config().setReportName("Automation API Test Execution");
         extent.attachReporter(spark);
     }
 
@@ -27,4 +29,15 @@ public class ExtentReport {
         extent.flush();
     }
 
+    public static void addAuthor(String[] authors){
+        for (String author:authors){
+            ExtentManager.getExTest().assignAuthor(author);
+        }
+    }
+
+    public static void addCategory (String[] categories){
+        for (String category:categories){
+            ExtentManager.getExTest().assignCategory(category);
+        }
+    }
 }
