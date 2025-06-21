@@ -31,7 +31,7 @@ public class AssertUtils extends BaseTest {
 
         logger.info("-- Standard GET Response Assertion -- ");
 
-        assertThat(response.getStatusCode()).as("Status code mismatch").isEqualTo(200);
+        assertThat(response.getStatusCode()).as("Status code mismatch").isEqualTo(20);
 //        if (logger.isInfoEnabled()) {
 //            logger.info("Received Status Code : " + response.getStatusCode());
 //        }

@@ -12,4 +12,20 @@ import org.aeonbits.owner.Config;
 public interface FrameworkConfig extends Config {
     String baseUri();
     String employeeEndPoint();
+
+    @Key("jira.baseurl")
+    String jiraBaseUrl();
+
+    @Key("jira.createissue.endpoint")
+    String jiraCreateIssueEndpoint();
+
+    @Key("jira.email")
+    String jiraEmail();
+
+    @Key("jira.api.token")
+    String jiraApiToken();
+
+    @Key("jira.project.key")
+    String jiraProjectKey();
+
 }

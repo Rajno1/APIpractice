@@ -5,9 +5,9 @@ import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.response.Response;
 import org.config.PropertyReader;
-import org.reports.ExtentLogger;
+import org.reportBuilder.ExtentLogger;
 import org.utils.ResponseWriter;
-import org.reports.ExtentManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,5 +91,9 @@ public abstract class BaseRequestBuilder<T extends BaseRequestBuilder<T>> {
         ExtentLogger.logRequestDetails(requestDetails.toString());
 
     }
+
+
+
+
 
 }

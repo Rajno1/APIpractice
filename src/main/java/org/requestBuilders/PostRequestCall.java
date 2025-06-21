@@ -1,7 +1,7 @@
 package org.requestBuilders;
 
 import io.restassured.response.Response;
-import org.requestBuilders.BaseRequestBuilder;
+import io.restassured.specification.RequestSpecification;
 
 
 public class PostRequestCall extends BaseRequestBuilder <PostRequestCall> {
@@ -11,15 +11,20 @@ public class PostRequestCall extends BaseRequestBuilder <PostRequestCall> {
 //        Response response = prepareRequest().when().post(endpoint).then().log().all().extract().response();
 //        storeResponse("POST", response);
 //        return response;
+
+        RequestSpecification request = prepareRequest();
+
         logRequestToReport("POST"); // Log request parameters to Extent report
 
-        Response response = prepareRequest()
+        Response response = request
                 .when()
                 .post(endpoint)
                 .then()
                 .log().all()
                 .extract()
                 .response();
+
+
 
         storeResponse("POST", response);
         return response;

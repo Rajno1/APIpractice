@@ -1,19 +1,13 @@
 package org.requests;
 
-import static io.restassured.RestAssured.*;
-
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import lombok.SneakyThrows;
 import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
-import org.pojo.Employee;
-import org.reports.ExtentLogger;
+import org.reportBuilder.ExtentLogger;
 import org.requestBuilders.PutRequestCall;
 import org.testng.annotations.Test;
-import org.testutils.AssertUtils;
 import org.utils.TestDataFactory;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @FrameworkAnnotation(author = {"QA Team"}, category = {"Regression"})
 public class PutRequest {

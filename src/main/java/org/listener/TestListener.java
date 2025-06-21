@@ -1,13 +1,14 @@
 package org.listener;
 
 import org.annotations.FrameworkAnnotation;
-import org.reports.ExtentLogger;
-import org.reports.ExtentReport;
+import org.reportBuilder.ExtentLogger;
+import org.reportBuilder.ExtentReport;
 import org.testng.ISuite;
 
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.utils.JiraUtils;
 
 public class TestListener implements ITestListener, ISuiteListener {
 
@@ -47,6 +48,17 @@ public class TestListener implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(String.valueOf(result.getThrowable()));
+
+        String summary = "Automation Bug: " + result.getName() + " failed";
+        String description = "Test method: " + result.getName() + "\n"
+                + "Error: " + (result.getThrowable() != null ? result.getThrowable().toString() : "No exception info");
+
+        try {
+            JiraUtils.createBug(summary, description);
+        } catch (Exception e) {
+            System.err.println("❌ Failed to create JIRA bug: " + e.getMessage());
+            e.printStackTrace();
+        }
          }
 
 

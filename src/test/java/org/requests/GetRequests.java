@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import org.BaseTest;
 import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
-import org.reports.ExtentLogger;
+import org.reportBuilder.ExtentLogger;
 import org.requestBuilders.GetRequestCall;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -32,10 +32,6 @@ public class GetRequests extends BaseTest {
             Response allEmpResponse= new GetRequestCall()
                     .setEndpoint(employeeEndPoint)
                     .send();
-         //   allEmpResponse.prettyPrint();
-
-       // ExtentManager.getExTest().pass(allEmpResponse.prettyPrint());
-       // ExtentManager.getExTest().pass(MarkupHelper.createCodeBlock(allEmpResponse.prettyPrint(), CodeLanguage.JSON));
 
         ExtentLogger.logResponse(allEmpResponse.asPrettyString());
 

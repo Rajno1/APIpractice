@@ -1,4 +1,4 @@
-package org.reports;
+package org.reportBuilder;
 
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;

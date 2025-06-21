@@ -7,7 +7,7 @@ import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.reports.ExtentLogger;
+import org.reportBuilder.ExtentLogger;
 import org.requestBuilders.PostRequestCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

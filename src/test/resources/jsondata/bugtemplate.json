@@ -1,0 +1,26 @@
+{
+  "fields": {
+    "project": {
+      "key": "@PROJECTKEY@"
+    },
+    "summary": "@SUMMARY@",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "@DESCRIPTION@",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "issuetype": {
+      "name": "Bug"
+    }
+  }
+}
