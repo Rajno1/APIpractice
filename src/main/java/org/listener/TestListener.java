@@ -48,16 +48,17 @@ public class TestListener implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(String.valueOf(result.getThrowable()));
-
-        String summary = "Automation Bug: " + result.getName() + " failed";
-        String description = "Test method: " + result.getName() + "\n"
-                + "Error: " + (result.getThrowable() != null ? result.getThrowable().toString() : "No exception info");
+        String summary = "Automation Bug: " + result.getName() + " failed.";
+        String description = "Test method: " + result.getName() + "\\nError: " + result.getThrowable();
 
         try {
-            JiraUtils.createBug(summary, description);
+            String issueKey = JiraUtils.createBug(summary, description);
+            if (issueKey != null) {
+                // ✅ Attach screenshot, logs, etc.
+                JiraUtils.attachFile(issueKey, "target/screenshots/" + result.getName() + ".png");
+            }
         } catch (Exception e) {
-            System.err.println("❌ Failed to create JIRA bug: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("❌ Failed to create JIRA bug or attach files: " + e.getMessage());
         }
          }
 

@@ -21,6 +21,13 @@
     },
     "issuetype": {
       "name": "Bug"
+    },
+    "priority": {
+      "name": "@PRIORITY@"
+    },
+    "labels": ["automation", "failed-test", "regression"],
+    "assignee": {
+      "name": "@ASSIGNEE@"
     }
   }
 }

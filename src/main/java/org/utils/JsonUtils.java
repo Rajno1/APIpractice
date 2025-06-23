@@ -1,6 +1,7 @@
 package org.utils;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -10,53 +11,43 @@ public class JsonUtils {
         // prevent instantiation
     }
 
-    public static String readJsonAsString(String filePath) {
-        try {
-            return new String(Files.readAllBytes(Paths.get(filePath)));
+//    public static String readJsonAsString(String filePath) {
+//        try {
+//            return new String(Files.readAllBytes(Paths.get(filePath)));
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to read JSON file: " + filePath, e);
+//        }
+//    }
+
+    public static String readJsonAsString(String resourcePath) {
+        try (InputStream is = JsonUtils.class.getClassLoader().getResourceAsStream(resourcePath)) {
+            if (is == null) {
+                throw new RuntimeException("File not found in resources: " + resourcePath);
+            }
+            return new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to read JSON file: " + filePath, e);
+            throw new RuntimeException("Failed to read JSON file from resources: " + resourcePath, e);
         }
     }
 
-    /**
-     * Reads the JSON file and replaces placeholders with actual values.
-     *
-     * //@param filePath Path to the JSON file
-     * @param summary Summary text for the bug
-     * @param description Description text for the bug
-     * @param projectKey Project key for the bug
-     * @return JSON string with replaced values
-     */
-//    public static String readJsonAndReplacePlaceholders(String filePath, String summary, String description, String projectKey) {
-//        String json = readJsonAsString(filePath);
-//        return json.replace("@SUMMARY@", escapeJson(summary))
-//                .replace("@DESCRIPTION@", escapeJson(description))
-//                .replace("@PROJECTKEY@", escapeJson(projectKey));
-//    }
-//
-//    /**
-//     * Escapes double quotes in input to make it safe for JSON.
-//     */
-//    private static String escapeJson(String input) {
-//        return input.replace("\"", "\\\"");
-//    }
-
-    public static String readJsonAndReplacePlaceholders(String resourcePath, String summary, String description, String projectKey) {
+    public static String readJsonAndReplacePlaceholders(String resourcePath, String summary,
+                                                        String description, String projectKey,
+                                                        String priority, String assignee) {
         String json = readJsonAsString(resourcePath);
         return json.replace("@SUMMARY@", escapeJson(summary))
                 .replace("@DESCRIPTION@", escapeJson(description))
-                .replace("@PROJECTKEY@", escapeJson(projectKey));
+                .replace("@PROJECTKEY@", escapeJson(projectKey))
+                .replace("@PRIORITY@", priority)
+                .replace("@ASSIGNEE@", assignee);
     }
 
     private static String escapeJson(String input) {
         if (input == null) {
-            return ""; // safety
+            return "";
         }
-        return input
-                .replace("\\", "\\\\")    // escape backslashes
-                .replace("\"", "\\\"")    // escape quotes
-                .replace("\n", "\\n")     // escape new lines
-                .replace("\r", "\\r");    // escape returns
+        return input.replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r");
     }
-
 }

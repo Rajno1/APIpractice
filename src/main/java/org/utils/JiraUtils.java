@@ -21,29 +21,52 @@ public class JiraUtils {
         return "Basic " + Base64.getEncoder().encodeToString(auth.getBytes());
     }
 
-    public static void createBug(String summary, String description) {
-        String filePath = "src/test/resources/jsondata/bugtemplate.json";
+    public static String createBug(String summary, String description) {
         String body = JsonUtils.readJsonAndReplacePlaceholders(
-                filePath,
+                "jsondata/bugtemplate.json",
                 summary,
                 description,
-                PropertyReader.getConfig().jiraProjectKey()
+                PropertyReader.getConfig().jiraProjectKey(),
+                "High",
+                "your.username"
         );
 
         Response response = RestAssured.given()
                 .baseUri(PropertyReader.getConfig().jiraBaseUrl())
                 .header("Authorization", getAuthHeader())
-                .contentType(ContentType.JSON)
+                .header("Content-Type", "application/json")
                 .body(body)
-                .post(PropertyReader.getConfig().jiraCreateIssueEndpoint());
+                .log().all()
+                .post("/rest/api/3/issue");
 
         if (response.statusCode() == 201) {
-            System.out.println("✅ Bug created: " + response.jsonPath().getString("key"));
+            String issueKey = response.jsonPath().getString("key");
+            System.out.println("✅ Created JIRA bug: " + issueKey);
+            return issueKey;
         } else {
             System.err.println("❌ Bug creation failed: " + response.statusCode());
             System.err.println(response.asString());
+            return null;
         }
     }
 
+
+
+    public static void attachFile(String issueKey, String filePath) {
+        Response attachResponse = RestAssured.given()
+                .baseUri(PropertyReader.getConfig().jiraBaseUrl())
+                .header("Authorization", getAuthHeader())
+                .header("X-Atlassian-Token", "no-check") // IMPORTANT
+                .multiPart("file", new java.io.File(filePath))
+                .log().all()
+                .post("/rest/api/3/issue/" + issueKey + "/attachments");
+
+        if (attachResponse.getStatusCode() == 200) {
+            System.out.println("✅ Attached file " + filePath + " to issue " + issueKey);
+        } else {
+            System.err.println("❌ Failed to attach file: " + attachResponse.getStatusCode());
+            System.err.println(attachResponse.asString());
+        }
+    }
 
 }
