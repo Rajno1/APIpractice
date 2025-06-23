@@ -2,8 +2,6 @@ package org.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class JsonUtils {
 
@@ -11,13 +9,6 @@ public class JsonUtils {
         // prevent instantiation
     }
 
-//    public static String readJsonAsString(String filePath) {
-//        try {
-//            return new String(Files.readAllBytes(Paths.get(filePath)));
-//        } catch (IOException e) {
-//            throw new RuntimeException("Failed to read JSON file: " + filePath, e);
-//        }
-//    }
 
     public static String readJsonAsString(String resourcePath) {
         try (InputStream is = JsonUtils.class.getClassLoader().getResourceAsStream(resourcePath)) {

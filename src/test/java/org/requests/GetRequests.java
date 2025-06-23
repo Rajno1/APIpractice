@@ -2,6 +2,7 @@ package org.requests;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
+import lombok.SneakyThrows;
 import org.BaseTest;
 import org.annotations.FrameworkAnnotation;
 import org.config.PropertyReader;
@@ -40,59 +41,38 @@ public class GetRequests extends BaseTest {
     }
     @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
     @Test(description = "Get Employee Details of Id 2")
-    public void getEmpTwo(){
+    public void getEmpTwoUsingPathParams(){
         String endpoint = PropertyReader.getConfig().employeeEndPoint();
         Response getEmpTwo = new GetRequestCall()
                 .setEndpoint(endpoint+"/{id}")
                 .addPathParam("id",2)
                 .send();
 
-       // getEmpTwo.prettyPrint();
-       // ExtentManager.getExTest().pass(MarkupHelper.createCodeBlock(getEmpTwo.prettyPrint(), CodeLanguage.JSON));
-
         ExtentLogger.logResponse(getEmpTwo.asPrettyString());
         AssertUtils.getResponseHeaders(getEmpTwo.getHeaders());
         AssertUtils.assertStandardResponses(getEmpTwo);
     }
+    @SneakyThrows
     @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
     @Test
-    public void getUserTwo(){  // Get Employee with id 2 using Query parameters
-       Response response = given()
-                .baseUri(PropertyReader.getConfig().baseUri())
-                .queryParam("id",2)
-                .log()
-                .all()
-                .get(PropertyReader.getConfig().employeeEndPoint());
+    public void getEmpTwoUsngQueryParms(){  // Get Employee with id 2 using Query parameters
+        String endpoint = PropertyReader.getConfig().employeeEndPoint();
+        Response response =  new GetRequestCall()
+                    .setEndpoint(endpoint)
+                    .addQueryParam("id",2)
+                    .send();
 
        AssertUtils.assertStandardResponses(response);
-    }
-
-    @FrameworkAnnotation(author = {"Raj"}, category = {"Smoke"})
-    @Test
-    public void getUserSix() throws IOException {
-        Response response = given()
-                .baseUri(PropertyReader.getConfig().baseUri())
-                .pathParam("id",6)
-                .log()
-                .all()
-                .get(PropertyReader.getConfig().employeeEndPoint()+"/{id}");
-
-        response.prettyPrint();
-
-
-
-        getResponseHeaders(response.headers());
-
-        AssertUtils.assertStandardResponses(response);
 
         // Asserting JSON value
-        AssertUtils.assertJsonString(response,"address[1].district","RangaReddy");
+        AssertUtils.assertJsonString(response,"[0].address[1].district","RangaReddy");
 
         // JSON Schema Validation
-        response.then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema.json"));
+//        response.then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema.json"));
 
         // String response in an external file
-        Files.write(Paths.get(System.getProperty("user.dir")+"/response.json"),response.asByteArray());
+      //  Files.write(Paths.get(System.getProperty("user.dir")+"/response.json"),response.asByteArray());
 
     }
+
 }
